@@ -30,4 +30,3 @@ lbl.pack()
 #mainloop ensures gui is constantly running
 display.mainloop()
 
-print(show())
