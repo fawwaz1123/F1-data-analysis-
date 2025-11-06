@@ -1,9 +1,9 @@
 import pandas as pd 
 from tkinter import *
 from tkinter import ttk
-
-data = pd.read_csv("F1Drivers_Dataset.csv")
-output = data.Driver.tolist()
+from database import database
+database = database()
+output = database.getDrivers().sort_values(by="driverRef").driverRef.tolist()
 
 display = Tk()
 display.geometry("200x200")
