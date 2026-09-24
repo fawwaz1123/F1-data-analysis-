@@ -1,32 +1,16 @@
-import pandas as pd 
+from comparison import compare
 from tkinter import *
 from tkinter import ttk
-
-data = pd.read_csv("F1Drivers_Dataset.csv")
-output = data.Driver.tolist()
+from database import database
 
 display = Tk()
 display.geometry("200x200")
 
-l = Label(display,text = "F1 drivers speed comparison")
+l = Label(display,text = "F1 data analysis")
 
 def show():
-  #cb.get() retrieves selected driver
-  lbl.config(text=cb.get())
-  print(cb.get())
+  compare(database())
 
-#combobox
-cb =ttk.Combobox(display, values=output)
-cb.set("select a driver")
-cb.pack()
+Button(display,text="Press to compare 2 drivers race data",command=show).pack()
 
-#display button for selection
-Button(display,text="Show selection", command=show).pack()
-
-#label to show selected driver
-lbl = Label(display, text="")
-lbl.pack()
-
-#mainloop ensures gui is constantly running
 display.mainloop()
-
