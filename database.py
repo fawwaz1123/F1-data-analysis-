@@ -1,21 +1,24 @@
 import pandas as pd
+from pathlib import Path
 
 class database:
 
     def __init__(self):
-        self.__drivers = pd.read_csv("drivers.csv")
-        self.__driver_standings = pd.read_csv("driver_standings.csv")
-        self.__laptimes = pd.read_csv("lap_times.csv")
-        self.__qualifying = pd.read_csv("qualifying.csv")
-        self.__circuits = pd.read_csv("circuits.csv")
-        self.__races = pd.read_csv("races.csv")
-        self.__seasons = pd.read_csv("seasons.csv")
-        self.__constructors = pd.read_csv("constructors.csv")
-        self.__contructor_standings = pd.read_csv("constructor_standings.csv")
-        self.__constructor_results = pd.read_csv("constructor_standings.csv")
-        self.__pitstops = pd.read_csv("pit_stops.csv")
-        self.__sprint_results = pd.read_csv("sprint_results.csv")
-        self.__status = pd.read_csv("status.csv")
+        data_path = Path(__file__).parent / "data"
+        self.__drivers = pd.read_csv(data_path / "drivers.csv")
+        self.__driver_standings = pd.read_csv(data_path / "driver_standings.csv")
+        self.__laptimes = pd.read_csv(data_path / "lap_times.csv")
+        self.__qualifying = pd.read_csv(data_path / "qualifying.csv")
+        self.__circuits = pd.read_csv(data_path / "circuits.csv")
+        self.__races = pd.read_csv(data_path / "races.csv")
+        self.__seasons = pd.read_csv(data_path / "seasons.csv")
+        self.__constructors = pd.read_csv(data_path / "constructors.csv")
+        self.__contructor_standings = pd.read_csv(data_path / "constructor_standings.csv")
+        self.__constructor_results = pd.read_csv(data_path / "constructor_results.csv")
+        self.__results = pd.read_csv(data_path / "results.csv")
+        self.__pitstops = pd.read_csv(data_path / "pit_stops.csv")
+        self.__sprint_results = pd.read_csv(data_path / "sprint_results.csv")
+        self.__status = pd.read_csv(data_path / "status.csv")
 
     def getDrivers(self):
         return self.__drivers
@@ -37,6 +40,8 @@ class database:
         return self.__contructor_standings
     def getConstructorResults(self):
         return self.__constructor_results
+    def getResults(self):
+        return self.__results
     def getPitstops(self):
         return self.__pitstops
     def getSprintResults(self):
